@@ -22,16 +22,16 @@ def global_cost (I1, I2): # t_C (equation 15)
     cost_method2 = (I1*(time_human_actions[0]+time_robot_actions[0])+I2*(time_human_actions[1]+time_robot_actions[0])+(1-(I1 + I2))*(time_human_actions[2]+time_robot_actions[2])) / (I1*2+I2) 
     return round(cost_method1, 4), round(cost_method2, 4)
 
-# Game data
+# Game data (experiment parameters)
 # Payoff_method1_Robot_actions = utilities calculated by equation 12 for C_3 and Payoff_method2_Robot_actions = utilities calculated by equation 12 for C_1
 Human_actions = ["AH1", "AH2", "AH3"] 
-Payoff_Human_actions = [540, 0, -540]
+Payoff_Human_actions = [2, 0, -2]
 time_human_actions = [15, 0, 15]
 Robot_actions = ["AR1", "AR2", "AR3"]
-time_robot_actions = [75, 0, 75]
-Payoff_method1_Robot_actions = [-108, 0, -108,  108, 0, -108, -108, 0, 108]
-Payoff_method2_Robot_actions = [108, 0, -108,  108, 0, -108, -108, 0, 108]
-cubes = 4
+time_robot_actions = [15, 0, 15]
+Payoff_method1_Robot_actions = [-2, 0, 2,  2, 0, -2, -2, 0, 2] # C3 utilities
+Payoff_method2_Robot_actions = [2, 0, -2,  2, 0, -2, -2, 0, 2] # C1 utilities
+cubes = 2
 number_of_simulation = 10000
 
 #initialisation of variables
@@ -161,7 +161,7 @@ with open('results.txt', 'w') as f:
     f.write("%s\n" %tabulate(table, tablefmt="grid"))
 
 #####################################
-# Difference between the average output time (seconds) 2D figure with the varation of I2 with respect to I1
+# Difference between the average output time (seconds) 2D figure with the variation of I2 with respect to I1
 i = 0 
 j = 0
 list_I2 = []
@@ -203,14 +203,13 @@ for list1_i, list2_i in zip_object:
     Z.append(list1_i-list2_i)
 
 ax.scatter3D(X, Y, Z, c=Z)
-ax.set_xlabel('x : I1')
-ax.set_ylabel('y : I2')
-ax.set_zlabel('z : mean time with method 2 - mean time with method 1 (sec)')
+ax.set_xlabel('x : I1', labelpad=15)
+ax.set_ylabel('y : I2', labelpad=15)
+ax.set_zlabel('z : mean time with method 2 - mean time with method 1 (seconds)', labelpad=15)
 plt.savefig("fig2.png", bbox_inches='tight', pad_inches=0.5)
-plt.show()
 
 #################################
-# Percentage of time improvement 2D figure with the varation of I2 with respect to I1
+# Percentage of time improvement 2D figure with the variation of I2 with respect to I1
 i = 0 
 j = 0
 list_I2 = []
@@ -241,15 +240,19 @@ plt.savefig("fig3.png", bbox_inches='tight', pad_inches=0.5)
 
 ################################
 #Percentage of time improvement 3D figure 
+fig = plt.figure(figsize=(25,12))
+ax = plt.axes(projection='3d')
 
+X = figure_I1
+Y = figure_I2
 Z = []
 zip_object = zip(mean_time_2, mean_time_1)
 for list1_i, list2_i in zip_object:
     Z.append(((list1_i-list2_i)/list1_i)*100)
 
 ax.scatter3D(X, Y, Z, c=Z)
-ax.set_xlabel('x : I1')
-ax.set_ylabel('y : I2')
-ax.set_zlabel('z : Percentage of the time improvement')
+ax.set_xlabel('x : I1', labelpad=15)
+ax.set_ylabel('y : I2', labelpad=15)
+ax.set_zlabel('z : Percentage of the time improvement', labelpad=15)
 plt.savefig("fig4.png", bbox_inches='tight', pad_inches=0.5)
 plt.show()

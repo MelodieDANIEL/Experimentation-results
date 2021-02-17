@@ -62,3 +62,4 @@ Robot_actions = ["AR1", "AR2", "AR3"]
 time_robot_actions = [75, 0, 75]
 Payoff_method1_Robot_actions = [-1.2, 0, -1.2,  1.2, 0, -1.2, -1.2, 0, 1.2] # C3 utilities
 Payoff_method2_Robot_actions = [1.2, 0, -1.2,  1.2, 0, -1.2, -1.2, 0, 1.2] # C1 utilities
+
