@@ -27,8 +27,8 @@ Payoff_Human_actions = [3, 0, -3]
 time_human_actions = [15, 0, 15]
 Robot_actions = ["AR1", "AR2", "AR3"]
 time_robot_actions = [30, 0, 30]
-Payoff_method1_Robot_actions = [-1.5, 0, -1.5,  1.5, 0, -1.5, -1.5, 0, 1.5]
-Payoff_method2_Robot_actions = [1.5, 0, -1.5,  1.5, 0, -1.5, -1.5, 0, 1.5]
+Payoff_method1_Robot_actions = [-1.5, 0, -1.5,  1.5, 0, -1.5, -1.5, 0, 1.5] # C3 utilities
+Payoff_method2_Robot_actions = [1.5, 0, -1.5,  1.5, 0, -1.5, -1.5, 0, 1.5] # C1 utilities
 
 
 EXPERIMENT 4 (ratio 1:3 and t = 60 sec): 
@@ -38,8 +38,8 @@ Payoff_Human_actions = [4, 0, -4]
 time_human_actions = [15, 0, 15]
 Robot_actions = ["AR1", "AR2", "AR3"]
 time_robot_actions = [45, 0, 45]
-Payoff_method1_Robot_actions = [-1.33, 0, -1.33,  1.33, 0, -1.33, -1.33, 0, 1.33]
-Payoff_method2_Robot_actions = [1.33, 0, -1.33,  1.33, 0, -1.33, -1.33, 0, 1.33]
+Payoff_method1_Robot_actions = [-1.33, 0, -1.33,  1.33, 0, -1.33, -1.33, 0, 1.33] # C3 utilities
+Payoff_method2_Robot_actions = [1.33, 0, -1.33,  1.33, 0, -1.33, -1.33, 0, 1.33] # C1 utilities
 
 
 EXPERIMENT 5 (ratio 1:4 and t = 75 sec): 
@@ -49,8 +49,8 @@ Payoff_Human_actions = [5, 0, -5]
 time_human_actions = [15, 0, 15]
 Robot_actions = ["AR1", "AR2", "AR3"]
 time_robot_actions = [60, 0, 60]
-Payoff_method1_Robot_actions = [-1.25, 0, -1.25,  1.25, 0, -1.25, -1.25, 0, 1.25]
-Payoff_method2_Robot_actions = [1.25, 0, -1.25,  1.25, 0, -1.25, -1.25, 0, 1.25]
+Payoff_method1_Robot_actions = [-1.25, 0, -1.25,  1.25, 0, -1.25, -1.25, 0, 1.25] # C3 utilities
+Payoff_method2_Robot_actions = [1.25, 0, -1.25,  1.25, 0, -1.25, -1.25, 0, 1.25] # C1 utilities
 
 
 EXPERIMENT 6 (ratio 1:5 and t = 90 sec): 
@@ -60,5 +60,5 @@ Payoff_Human_actions = [6, 0, -6]
 time_human_actions = [15, 0, 15]
 Robot_actions = ["AR1", "AR2", "AR3"]
 time_robot_actions = [75, 0, 75]
-Payoff_method1_Robot_actions = [-1.2, 0, -1.2,  1.2, 0, -1.2, -1.2, 0, 1.2]
-Payoff_method2_Robot_actions = [1.2, 0, -1.2,  1.2, 0, -1.2, -1.2, 0, 1.2]
+Payoff_method1_Robot_actions = [-1.2, 0, -1.2,  1.2, 0, -1.2, -1.2, 0, 1.2] # C3 utilities
+Payoff_method2_Robot_actions = [1.2, 0, -1.2,  1.2, 0, -1.2, -1.2, 0, 1.2] # C1 utilities
