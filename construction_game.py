@@ -22,7 +22,7 @@ def global_cost (I1, I2): # t_C (equation 15)
     cost_method2 = (I1*(time_human_actions[0]+time_robot_actions[0])+I2*(time_human_actions[1]+time_robot_actions[0])+(1-(I1 + I2))*(time_human_actions[2]+time_robot_actions[2])) / (I1*2+I2) 
     return round(cost_method1, 4), round(cost_method2, 4)
 
-# Game datas
+# Game data
 # Payoff_method1_Robot_actions = utilities calculated by equation 12 for C_3 and Payoff_method2_Robot_actions = utilities calculated by equation 12 for C_1
 Human_actions = ["AH1", "AH2", "AH3"] 
 Payoff_Human_actions = [540, 0, -540]
@@ -146,7 +146,7 @@ for list1_i, list2_i in zip_object:
     improvement.append(((list1_i-list2_i)/list1_i)*100)
 
 ###############################
-#printing and registring the datas in a table
+#printing and registring the data in a table
 i = 0
 table = []
 row = ["I1 and I2", "average time with C3", "average time with C1", "improvement", "std of time with C3", "std of time with C1", "maximum time with C3", "minimum time with C3", "maximum time with C1", "minimum time with C1"]
