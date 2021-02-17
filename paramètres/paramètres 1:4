@@ -1,0 +1,12 @@
+t = 75 sec
+tah = 15 sec
+tar = 60 sec
+(rapport H : R = 1 : 4)
+
+Human_actions = ["AH1", "AH2", "AH3"] 
+Payoff_Human_actions = [5, 0, -5]
+time_human_actions = [15, 0, 15]
+Robot_actions = ["AR1", "AR2", "AR3"]
+time_robot_actions = [60, 0, 60]
+Payoff_method1_Robot_actions = [-1.25, 0, -1.25,  1.25, 0, -1.25, -1.25, 0, 1.25]
+Payoff_method2_Robot_actions = [1.25, 0, -1.25,  1.25, 0, -1.25, -1.25, 0, 1.25]
