@@ -1,5 +1,5 @@
 # Experimentation-results
-We have conducted experiments in simulation on a construction game to prove the optimization of human-robot collaboration. To do this, we optimize the HRC by considering performance criteria (time completion and the number of human errors) in the cost values of the utility function of the decision-making process. 
+We have conducted experiments in simulation on a construction game to prove the optimization of human-robot collaboration. To do this, we optimize the HRC by considering performance metrics (time completion and the number of human errors) in the reward values of the utility function of the decision-making process. 
 
 Experiment conditions:
 - The human can choose one among three actions : A<sub>H,G</sub> with a probability P<sub>G</sub> = I<sub>1</sub>, A<sub>H,W</sub> with a probability P<sub>W</sub> = I<sub>2</sub>, and  A<sub>H,B</sub> with a probability P<sub>B</sub> = 1-(I<sub>1</sub> + I<sub>2</sub>).

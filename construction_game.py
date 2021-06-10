@@ -9,11 +9,11 @@ def human_choice(Human_intelligence_1, Human_intelligence_2):
     probability_distribution = [Human_intelligence_1, Human_intelligence_2, 1 - (Human_intelligence_1 + Human_intelligence_2)] #should be the same length than the human action's number
     return numpy.random.choice(numpy.arange(0, len(Human_actions)), p=probability_distribution)
 
-def method1(index_H_action): #robot choice with C_3
+def method1(index_H_action): #robot choice with C2
     index_R_action = Payoff_method1_Robot_actions[0+index_H_action*len(Human_actions):index_H_action*len(Human_actions)+len(Human_actions)].index(max(Payoff_method1_Robot_actions[0+index_H_action*len(Human_actions):index_H_action*len(Human_actions)+len(Human_actions)]))
     return index_R_action
 
-def method2(index_H_action): #robot choice with C_1
+def method2(index_H_action): #robot choice with C1
     index_R_action = Payoff_method2_Robot_actions[0+index_H_action*len(Human_actions):index_H_action*len(Human_actions)+len(Human_actions)].index(max(Payoff_method2_Robot_actions[0+index_H_action*len(Human_actions):index_H_action*len(Human_actions)+len(Human_actions)]))
     return index_R_action
 
@@ -22,16 +22,15 @@ def global_cost (I1, I2): # t_C (equation 15)
     cost_method2 = (I1*(time_human_actions[0]+time_robot_actions[0])+I2*(time_human_actions[1]+time_robot_actions[0])+(1-(I1 + I2))*(time_human_actions[2]+time_robot_actions[2])) / (I1*2+I2) 
     return round(cost_method1, 4), round(cost_method2, 4)
 
-# Game data (experiment parameters)
-# Payoff_method1_Robot_actions = utilities calculated by equation 12 for C_3 and Payoff_method2_Robot_actions = utilities calculated by equation 12 for C_1
+# Game data (from file experiment_parameters.txt)
 Human_actions = ["AH1", "AH2", "AH3"] 
 Payoff_Human_actions = [2, 0, -2]
 time_human_actions = [15, 0, 15]
 Robot_actions = ["AR1", "AR2", "AR3"]
 time_robot_actions = [15, 0, 15]
-Payoff_method1_Robot_actions = [-2, 0, 2,  2, 0, -2, -2, 0, 2] # C3 utilities
+Payoff_method1_Robot_actions = [-2, 0, -2,  2, 0, -2, -2, 0, 2] # C2 utilities
 Payoff_method2_Robot_actions = [2, 0, -2,  2, 0, -2, -2, 0, 2] # C1 utilities
-cubes = 2
+cubes = 5
 number_of_simulation = 10000
 
 #initialisation of variables
@@ -68,7 +67,7 @@ while I1 < len(Human_intelligence_1):
             figure_I2.append(Human_intelligence_2[I2])
             Human_intelligence.append("I1 : " + str(Human_intelligence_1[I1]) + " and I2 : " + str(Human_intelligence_2[I2]))
             while i < number_of_simulation:
-                 # Simulation of the Game for C_3
+                 # Simulation of the Game for C3
                 while cubes_placed < cubes:
                     index_H_action =  human_choice(Human_intelligence_1[I1], Human_intelligence_2[I2])
                     H_actions.append(Human_actions[index_H_action])
@@ -179,16 +178,16 @@ while (j < len(figure_I1)):
             difference.append(list1_i-list2_i)
 
         plt.plot(list_I2, difference,'-o')
-        plt.annotate('I1 = ' + str(i), xy= (list_I2[len(list_I2)-1], difference[len(difference)-1]), xytext=(list_I2[len(list_I2)-1]+0.05, difference[len(difference)-1]+0), arrowprops=dict())
-        plt.xlabel('Values of I2')
+        plt.annotate('$I_1 = $' + str(i), xy= (list_I2[len(list_I2)-1], difference[len(difference)-1]), xytext=(list_I2[len(list_I2)-1]+0.05, difference[len(difference)-1]+0), arrowprops=dict())
+        plt.xlabel('Values of $I_2$')
         plt.ylabel('Difference between the average output time (seconds) obtained by case 1 and 3 over 10000 simulations')
         
         list_I2 = []
         i += 0.1 # step to change I_1
         i = round(i, 2)
 plt.plot(0, mean_time_2[len(mean_time_2)-1] - mean_time_1[len(mean_time_1)-1],'-o')
-plt.annotate('I1 = ' + str(1), xy= (0, mean_time_2[len(mean_time_2)-1] - mean_time_1[len(mean_time_1)-1]), xytext=(0.05, mean_time_2[len(mean_time_2)-1] - mean_time_1[len(mean_time_1)-1]), arrowprops=dict())
-plt.savefig("fig1.png", bbox_inches='tight', pad_inches=0.5)
+plt.annotate('$I_1 = $' + str(1), xy= (0, mean_time_2[len(mean_time_2)-1] - mean_time_1[len(mean_time_1)-1]), xytext=(0.05, mean_time_2[len(mean_time_2)-1] - mean_time_1[len(mean_time_1)-1]), arrowprops=dict())
+plt.savefig("fig1.jpg", bbox_inches='tight', pad_inches=0.5)
 
 ####################################
 # Difference between the average output time (seconds) 3D figure
@@ -203,10 +202,10 @@ for list1_i, list2_i in zip_object:
     Z.append(list1_i-list2_i)
 
 ax.scatter3D(X, Y, Z, c=Z)
-ax.set_xlabel('x : I1', labelpad=15)
-ax.set_ylabel('y : I2', labelpad=15)
-ax.set_zlabel('z : mean time with method 2 - mean time with method 1 (seconds)', labelpad=15)
-plt.savefig("fig2.png", bbox_inches='tight', pad_inches=0.5)
+ax.set_xlabel('$x : I_1$', labelpad=15)
+ax.set_ylabel('$y : I_2$', labelpad=15)
+ax.set_zlabel('$z :$ mean time with method 2 - mean time with method 1 (seconds)', labelpad=15)
+plt.savefig("fig2.jpg", bbox_inches='tight', pad_inches=0.5)
 
 #################################
 # Percentage of time improvement 2D figure with the variation of I2 with respect to I1
@@ -227,16 +226,16 @@ while (j < len(figure_I1)):
             difference.append(((list1_i-list2_i)/list1_i)*100)
 
         plt.plot(list_I2, difference,'-o')
-        plt.annotate('I1 = ' + str(i), xy= (list_I2[len(list_I2)-1], difference[len(difference)-1]), xytext=(list_I2[len(list_I2)-1]+0.05, difference[len(difference)-1]+0), arrowprops=dict())
-        plt.xlabel('Values of I2')
+        plt.annotate('$I_1 = $' + str(i), xy= (list_I2[len(list_I2)-1], difference[len(difference)-1]), xytext=(list_I2[len(list_I2)-1]+0.05, difference[len(difference)-1]+0), arrowprops=dict())
+        plt.xlabel('Values of $I_2$')
         plt.ylabel('Percentage of the time improvement')  
 
         list_I2 = []
         i += 0.1 # step to change I_1
         i = round(i, 2)
 plt.plot(0, improvement[len(improvement)-1],'-o')
-plt.annotate('I1 = ' + str(1), xy= (0, improvement[len(improvement)-1]), xytext=(0.05, improvement[len(improvement)-1]), arrowprops=dict())
-plt.savefig("fig3.png", bbox_inches='tight', pad_inches=0.5)
+plt.annotate('$I_1 = $' + str(1), xy= (0, improvement[len(improvement)-1]), xytext=(0.05, improvement[len(improvement)-1]), arrowprops=dict())
+plt.savefig("fig3.jpg", bbox_inches='tight', pad_inches=0.5)
 
 ################################
 #Percentage of time improvement 3D figure 
@@ -251,8 +250,8 @@ for list1_i, list2_i in zip_object:
     Z.append(((list1_i-list2_i)/list1_i)*100)
 
 ax.scatter3D(X, Y, Z, c=Z)
-ax.set_xlabel('x : I1', labelpad=15)
-ax.set_ylabel('y : I2', labelpad=15)
-ax.set_zlabel('z : Percentage of the time improvement', labelpad=15)
-plt.savefig("fig4.png", bbox_inches='tight', pad_inches=0.5)
+ax.set_xlabel('$x : I_1$', labelpad=15)
+ax.set_ylabel('$y : I_2$', labelpad=15)
+ax.set_zlabel('$z :$ Percentage of the time improvement', labelpad=15)
+plt.savefig("fig4.jpg", bbox_inches='tight', pad_inches=0.5)
 plt.show()
